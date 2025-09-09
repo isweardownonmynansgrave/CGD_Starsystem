@@ -1,13 +1,22 @@
+using System;
 using UnityEngine;
 
 public class PhysicsManager : MonoBehaviour
 {
     // Gravity Well
-    private double gravityWell_lowerBound = 1 * 10e-6d;
+    private double gravityWell_lowerBound;
 
     // SOI
-    double soi_formelExponent = 2d / 5d;
+    double soi_formelExponent;
     #region Mono
+    // Wird MONO-BEHAVIOUR überhaupt benötigt?
+    void Awake()
+    {
+        // DATA
+        // FIXED DATA INIT
+        gravityWell_lowerBound = 1 * 10e-6d;
+        soi_formelExponent = 2d / 5d;
+    }
     void Start()
     {
 
@@ -24,16 +33,20 @@ public class PhysicsManager : MonoBehaviour
     {
         bool b = false;
 
-
+        // TBD??
 
         return b;
     }
     public static double GetRsoi(GameObject _subordinateObj, GameObject _zentralObj)
     {
-        if (_obj1 is Himmelskoerper && _obj2 is Himmelskoerper)
+        Himmelskoerper _subordinate;
+        Himmelskoerper _zentral;
+
+        if (_subordinateObj.TryGetComponent(typeof(Himmelskoerper), out _subordinate) &&
+             _zentralObj.TryGetComponent(typeof(Himmelskoerper), out _zentral))
         {
             double result = Math.Pow(GetDistanceByCalc(_subordinateObj, _zentralObj) // Abstand zum Zentralobjekt, z.B. Sonne für Erde, Erde für Mond etc.
-                         * (_subordinateObj.Masse / _zentralObj.Masse), soi_formelExponent);
+                         * (_subordinate.Masse / _zentral.Masse), soi_formelExponent);
             return result;
         }
         else
@@ -45,6 +58,12 @@ public class PhysicsManager : MonoBehaviour
     #endregion
 
     #region Gravity-Well
+    /// <summary>
+    /// Gibt den GravityWell-Radius eines Himmelskörpers als <double> zurück.
+    /// </summary>
+    /// <param name="_masse1">Die Masse des XY Objektes.</param>
+    /// <param name="_masse2">Die Masse des XY Objektes.</param>
+    /// <param name="_g">?</param>
     public static double GetGravityWellRadius(double _masse1, double _masse2, double _g)
     {
         return Math.Sqrt((_masse1 * _masse2) / _g);
@@ -52,7 +71,13 @@ public class PhysicsManager : MonoBehaviour
     #endregion
 
     #region Distanzberechnung
-    public double GetDistanceByCalc(GameObject _obj1, GameObject _obj2) // Platzhalter für Tatsächliche Mechanik zur Berechnung des Abstands
+    /// <summary>
+    /// Gibt einen <double> zurück, der die Distanz zwischen 2 Objekten darstellt (Unityscale/Realscale??). Mathematisch berechnet.
+    /// </summary>
+    /// <param name="_obj1"></param>
+    /// <param name="_obj2"></param>
+    /// <returns></returns>
+    public static double GetDistanceByCalc(GameObject _obj1, GameObject _obj2) // Platzhalter für Tatsächliche Mechanik zur Berechnung des Abstands
     {
         Vector3 pos1 = _obj1.Transform.position;
         Vector3 pos2 = _obj2.Transform.position;
@@ -62,6 +87,12 @@ public class PhysicsManager : MonoBehaviour
         Math.Pow(pos2.z - pos1.z, 2)
     );
     }
+    /// <summary>
+    /// Gibt einen <double> zurück, der die Distanz zwischen 2 Objekten darstellt (Unityscale/Realscale??). Via Vectoren-Methode von UnityEngine.Vector3.
+    /// </summary>
+    /// <param name="_subordinatePos"></param>
+    /// <param name="_parentPos"></param>
+    /// <returns></returns>
     public double GetDistanceByVector(Vector3 _subordinatePos, Vector3 _parentPos)
         => Vector3.Distance(_subordinatePos, _parentPos);
     #endregion
