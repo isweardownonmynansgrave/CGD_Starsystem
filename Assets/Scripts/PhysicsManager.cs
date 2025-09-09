@@ -5,18 +5,18 @@ public class PhysicsManager : MonoBehaviour
 {
 #pragma warning disable IDE0052 // "Value never used"-Warnung abstellen
     // Gravity Well
-    private double gravityWell_lowerBound;
+    private double gravityWell_LOWERBOUND;
 #pragma warning restore IDE0052
     
     // SOI
-    double soi_formelExponent;
+    static double soi_FORMELEXPONENT;
     #region Mono
     // Wird MONO-BEHAVIOUR überhaupt benötigt?
     void Awake()
     {
         // FIXED DATA INIT
-        gravityWell_lowerBound = 1 * 10e-6d;
-        soi_formelExponent = 2d / 5d;
+        gravityWell_LOWERBOUND = 1 * 10e-6d;
+        soi_FORMELEXPONENT = 2d / 5d;
     }
     void Start()
     {
@@ -30,7 +30,7 @@ public class PhysicsManager : MonoBehaviour
     #endregion
 
     #region SphereOfInfluence-Mechanic
-    private bool InitSOI()
+    private bool InitSOI() // WIP
     {
         bool b = false;
 
@@ -38,7 +38,14 @@ public class PhysicsManager : MonoBehaviour
 
         return b;
     }
-    public double GetRsoi(GameObject _subordinateObj, GameObject _zentralObj)
+
+    /// <summary>
+    /// Berechnet den Sphere-of-Influence Radius, für den gegebenen Körper, gegenüber dem Zentralobjekt.
+    /// </summary>
+    /// <param name="_subordinateObj">Zielobjekt, dessen SoI berechnet gegenüber dem Zentralobjekt, berechnet wird.</param>
+    /// <param name="_zentralObj">Das Zentralobjekt, das die lokale Gravitation dominiert (z.B. Stern, Schwarzes Loch).</param>
+    /// <returns><double> SoI-Radius in km.</returns>
+    public static double GetRsoi(GameObject _subordinateObj, GameObject _zentralObj)
     {
         Himmelskoerper _subordinate;
         Himmelskoerper _zentral;
@@ -46,13 +53,13 @@ public class PhysicsManager : MonoBehaviour
         if (_subordinateObj.TryGetComponent(out _subordinate) &&
              _zentralObj.TryGetComponent(out _zentral))
         {
-            double result = Math.Pow(GetDistanceByCalc(_subordinateObj, _zentralObj) // Abstand zum Zentralobjekt, z.B. Sonne für Erde, Erde für Mond etc.
-                         * (_subordinate.Masse / _zentral.Masse), soi_formelExponent);
+            double masseVerhaeltnis = _subordinate.Masse / _zentral.Masse;
+            double result = GetDistanceByCalc(_subordinateObj, _zentralObj) * Math.Pow(masseVerhaeltnis, soi_FORMELEXPONENT);
             return result;
         }
         else
         {
-            throw new Exception("Objekte sind nicht vom Typ Himmelskoerper(||inherit)");
+            return 0;
         }
 
     }
