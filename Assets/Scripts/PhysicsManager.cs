@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class PhysicsManager : MonoBehaviour
 {
-#pragma warning disable IDE0052 // "Value never used"-Warnung abstellen
+    private static double GRAVITATIONSKONSTANTE;
     // Gravity Well
     private double gravityWell_LOWERBOUND;
-#pragma warning restore IDE0052
     
     // SOI
-    static double soi_FORMELEXPONENT;
+    static double soi_FORMEL_EXPONENT;
+    static double soi_AVERAGE_ANGULAR_DISTANCE;
     #region Mono
     // Wird MONO-BEHAVIOUR überhaupt benötigt?
     void Awake()
     {
         // FIXED DATA INIT
+        GRAVITATIONSKONSTANTE = 6.674d * 10e-11d;
         gravityWell_LOWERBOUND = 1 * 10e-6d;
-        soi_FORMELEXPONENT = 2d / 5d;
+        soi_FORMEL_EXPONENT = 2d / 5d;
     }
     void Start()
     {
@@ -54,8 +55,8 @@ public class PhysicsManager : MonoBehaviour
              _zentralObj.TryGetComponent(out _zentral))
         {
             double masseVerhaeltnis = _subordinate.Masse / _zentral.Masse;
-            double result = GetDistanceByCalc(_subordinateObj, _zentralObj) * Math.Pow(masseVerhaeltnis, soi_FORMELEXPONENT);
-            return result;
+            double baseFormulaResult = GetDistanceByCalc(_subordinateObj, _zentralObj) * Math.Pow(masseVerhaeltnis, soi_FORMEL_EXPONENT);
+            return soi_AVERAGE_ANGULAR_DISTANCE * baseFormulaResult;
         }
         else
         {
@@ -72,9 +73,11 @@ public class PhysicsManager : MonoBehaviour
     /// <param name="_masse1">Die Masse des XY Objektes.</param>
     /// <param name="_masse2">Die Masse des XY Objektes.</param>
     /// <param name="_g">?</param>
-    public static double GetGravityWellRadius(double _masse1, double _masse2, double _g)
+    public static double GetGravityWellRadius(double _masse1, double _masse2, double _schwellenwert)
     {
-        return Math.Sqrt((_masse1 * _masse2) / _g);
+        return Math.Sqrt(
+            GRAVITATIONSKONSTANTE * ((_masse1 * _masse2) / _schwellenwert)
+        );
     }
     #endregion
 
