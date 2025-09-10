@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PhysicsManager : MonoBehaviour
 {
+    // Unity Skybox-Asset
+    // assetstore.unity.com/packages/package/92717
     private static double GRAVITATIONSKONSTANTE;
     // Gravity Well
     private double gravityWell_LOWERBOUND;
@@ -11,13 +13,13 @@ public class PhysicsManager : MonoBehaviour
     static double soi_FORMEL_EXPONENT;
     static double soi_AVERAGE_ANGULAR_DISTANCE;
     #region Mono
-    // Wird MONO-BEHAVIOUR überhaupt benötigt?
     void Awake()
     {
         // FIXED DATA INIT
         GRAVITATIONSKONSTANTE = 6.674d * 10e-11d;
         gravityWell_LOWERBOUND = 1 * 10e-6d;
         soi_FORMEL_EXPONENT = 2d / 5d;
+        soi_AVERAGE_ANGULAR_DISTANCE = 0.9431d;
     }
     void Start()
     {
@@ -43,7 +45,7 @@ public class PhysicsManager : MonoBehaviour
     /// <summary>
     /// Berechnet den Sphere-of-Influence Radius, für den gegebenen Körper, gegenüber dem Zentralobjekt.
     /// </summary>
-    /// <param name="_subordinateObj">Zielobjekt, dessen SoI berechnet gegenüber dem Zentralobjekt, berechnet wird.</param>
+    /// <param name="_subordinateObj">Zielobjekt, dessen SoI gegenüber dem Zentralobjekt, berechnet wird.</param>
     /// <param name="_zentralObj">Das Zentralobjekt, das die lokale Gravitation dominiert (z.B. Stern, Schwarzes Loch).</param>
     /// <returns><double> SoI-Radius in km.</returns>
     public static double GetRsoi(GameObject _subordinateObj, GameObject _zentralObj)
