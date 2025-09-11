@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CGD_Starsystem.sln"
+    "dotnet.defaultSolution": "CGD_Starsystem.sln",
+    "dotnet.preferCSharpExtension": true
 }
