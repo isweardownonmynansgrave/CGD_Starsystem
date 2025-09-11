@@ -5,10 +5,12 @@ public class Himmelskoerper : MonoBehaviour
     #region Instanzvariablen
     // Physikalische Werte
     protected double masse;
-    [HideInInspector] public Vector3 bewegungsvektor;
+    private Vector3[] OrbitKoordinaten;
+    
 
-    // Allgemein
+    // Euler-Ansatz (Vector)
     public Vector3 InitialVelocity { get; set; }
+    [HideInInspector] public Vector3 bewegungsvektor;
 
     #endregion
 
@@ -17,6 +19,7 @@ public class Himmelskoerper : MonoBehaviour
     {
         get => masse;
     }
+
     #endregion
 
     #region MonoBehaviour-Methoden
@@ -33,9 +36,10 @@ public class Himmelskoerper : MonoBehaviour
     #endregion
 
     #region Physics
+    #region Euler-Integration
     //Euler Integration - Für Massereiche Körper deprecated. Stattdessen KeplerOrbit und SOI Mechanics nutzen
     public void UpdateVelocity(Vector3 _beschleunigung, float _deltaTime) => bewegungsvektor += _beschleunigung * _deltaTime;
     public void UpdatePosition(float deltaTime) => transform.position += bewegungsvektor * deltaTime;
-
+    #endregion
     #endregion
 }

@@ -24,12 +24,38 @@ public class GameManager : MonoBehaviour
         timer_stunde = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Timer
         AddIntervall();
     }
+
+    #region Init
+    /* Ablauf-Klakulation
+    1. Nimm dein vorhandenes Kepler-Setup (a, e, i, Ω, ω).
+    2. Erzeuge viele Werte der mittleren Anomalie M von 0 … 2π.
+    3. Löse für jeden M die Kepler-Gleichung → E.
+    4. Berechne die wahre Anomalie ν und den Radius r.
+    5. Transformiere in den Weltkoordinaten-Raum wie im Update().
+    6. Pack die Punkte in ein Vector3[].
+    */
+    // Initialisieren der Laufbahnen
+    public void InitKeplerOrbit(GameObject _obj, int _anzahlKoordinaten = 128)
+    {
+        Himmelskoerper hk = _obj.GetComponent<Himmelskoerper>();
+        KeplerOrbit orbit = _obj.GetComponent<KeplerOrbit>();
+
+        // Werte der mittleren Anomalie M erzeugen, von 0 … 2π.
+        float[] werteDerMittlerenAnomalie = new float[_anzahlKoordinaten];
+        // TBD - Calc
+
+        // Löse für jeden M die Kepler-Gleichung → E. 
+        foreach (float M in werteDerMittlerenAnomalie)
+        {
+            
+        }
+    }
+    #endregion
 
     #region Timer
     public void AddIntervall(int _multiplikator = 1) // Möglichkeiten: x1,x100,x1000
@@ -47,13 +73,4 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
-    /*
-    Nimm dein vorhandenes Kepler-Setup (a, e, i, Ω, ω).
-    Erzeuge viele Werte der mittleren Anomalie M von 0 … 2π.
-    Löse für jeden M die Kepler-Gleichung → E.
-    Berechne die wahre Anomalie ν und den Radius r.
-    Transformiere in den Weltkoordinaten-Raum wie im Update().
-    Pack die Punkte in ein Vector3[].
-    */
 }
