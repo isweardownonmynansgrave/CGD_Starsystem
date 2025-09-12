@@ -54,10 +54,6 @@ public class GameManager : MonoBehaviour
         // Werte der mittleren Anomalie M erzeugen, von 0 … 2π.
         Vector3[] werteDerMittlerenAnomalie = GenerateOrbitPoints(orbit, _anzahlKoordinaten);
 
-        foreach (float M in werteDerMittlerenAnomalie)
-        {
-            // TBD - Calc
-        }
     }
     public Vector3[] GenerateOrbitPoints(KeplerOrbit _target, int numPoints)
     {
