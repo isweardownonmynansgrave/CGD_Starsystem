@@ -55,7 +55,7 @@ public class KeplerOrbit : MonoBehaviour
         planetMesh.position = worldPos;
     }
 
-    float SolveEccentricAnomaly(float M, float e, int iters = 8)
+    public static float SolveEccentricAnomaly(float M, float e, int iters = 8)
     {
         M = Mathf.Repeat(M, 2f * Mathf.PI); // wrap
         float E = e < 0.8f ? M : Mathf.PI;  // initial guess
