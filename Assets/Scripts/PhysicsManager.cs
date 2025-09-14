@@ -8,11 +8,11 @@ public class PhysicsManager : MonoBehaviour
     private static double GRAVITATIONSKONSTANTE;
     // Gravity Well
     private double gravityWell_LOWERBOUND;
-    
+
     // SOI
     static double soi_FORMEL_EXPONENT;
     static double soi_AVERAGE_ANGULAR_DISTANCE;
-    #region Mono
+    #region MonoBehaviour
     void Awake()
     {
         // FIXED DATA INIT
@@ -83,6 +83,7 @@ public class PhysicsManager : MonoBehaviour
     }
     #endregion
 
+    #region Formelsammlung
     #region Distanzberechnung
     /// <summary>
     /// Gibt einen <double> zurück, der die Distanz zwischen 2 Objekten darstellt (Unityscale/Realscale??). Mathematisch berechnet.
@@ -108,5 +109,12 @@ public class PhysicsManager : MonoBehaviour
     /// <returns></returns>
     public double GetDistanceByVector(Vector3 _subordinatePos, Vector3 _parentPos)
         => Vector3.Distance(_subordinatePos, _parentPos);
+    #endregion
+
+    public static double BerechneGewichtskraftInNewton(double _masseInKg, double _radiusInMeter)
+    {
+        double g = GRAVITATIONSKONSTANTE * (_masseInKg / Math.Pow(_radiusInMeter, 2));
+        return g;
+    }
     #endregion
 }

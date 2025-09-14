@@ -5,8 +5,12 @@ public class Himmelskoerper : MonoBehaviour
     #region Instanzvariablen
     // Physikalische Werte
     protected double masse;
-    private Vector3[] OrbitKoordinaten;
-    
+    protected double durchmesserInKm;
+    protected double gewichtskraft;
+
+    // Verwaltung
+    public string Name;
+
 
     // Euler-Ansatz (Vector)
     public Vector3 InitialVelocity { get; set; }
@@ -18,6 +22,11 @@ public class Himmelskoerper : MonoBehaviour
     public double Masse
     {
         get => masse;
+    }
+    public double DurchmesserInKm
+    {
+        get => durchmesserInKm;
+        set => durchmesserInKm = value;
     }
 
     #endregion
@@ -41,5 +50,7 @@ public class Himmelskoerper : MonoBehaviour
     public void UpdateVelocity(Vector3 _beschleunigung, float _deltaTime) => bewegungsvektor += _beschleunigung * _deltaTime;
     public void UpdatePosition(float deltaTime) => transform.position += bewegungsvektor * deltaTime;
     #endregion
+
+    
     #endregion
 }
