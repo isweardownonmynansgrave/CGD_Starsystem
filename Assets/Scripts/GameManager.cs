@@ -18,16 +18,26 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject Sun { get; set; }
 
+    // Events
+    public Action InitInfosCall { get; set; }
+
     #region Mono
-    void Start()
+    private void Awake()
     {
+        // Singleton
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+    }
+    void Start()
+    {
         timer_stunde = 0;
         timer_minute = 0;
         timer_stunde = 0;
+
+        // Events
+        InitInfosCall?.Invoke();
     }
 
     void Update()
@@ -47,30 +57,28 @@ public class GameManager : MonoBehaviour
     6. Pack die Punkte in ein Vector3[].
     */
     // Initialisieren der Laufbahnen
-    public void InitKeplerOrbit(GameObject _obj, int _anzahlKoordinaten = 128)
+    public static void InitKeplerOrbit(GameObject _obj, GameObject _zentralObj, int _anzahlKoordinaten = 128)
     {
+        HKMassereich hk = null;
+        KeplerOrbit orbit = null;
         try
         {
-            HKMassereich hk = _obj.GetComponent<HKMassereich>();
-            KeplerOrbit orbit = _obj.GetComponent<KeplerOrbit>();
-            LineRenderer renderer = _obj.GetComponent<LineRenderer>();
+            hk = _obj.GetComponent<HKMassereich>();
+            orbit = _obj.GetComponent<KeplerOrbit>();
         }
         catch (Exception e)
         {
             Debug.Log(e.Message);
         }
         
+        // Werte der mittleren Anomalie M erzeugt, Gleichung gelöst, Koords-Array zurückgegeben
+        hk.OrbitKoordinaten = GenerateOrbitPoints(orbit, _zentralObj.transform, _anzahlKoordinaten);
 
-
-        // Werte der mittleren Anomalie M erzeugt, Gleichung gelöst, Array zurückgegeben
-        hk.OrbitKoordinaten = GenerateOrbitPoints(orbit, _anzahlKoordinaten);
-
-        
+        hk.InitLineRenderer(_anzahlKoordinaten);
     }
-    public Vector3[] GenerateOrbitPoints(KeplerOrbit _target, int numPoints)
+    private static Vector3[] GenerateOrbitPoints(KeplerOrbit _target, Transform _zentralObjekt, int numPoints) // Access via InitKelperOrbit()
     {
         Vector3[] points = new Vector3[numPoints];
-        Transform sun = Sun.transform; // Mittelpunkt der elliptischen Bahn, um die der HK kreist
 
         // Rotation vorbereiten
         Quaternion Rz_Omega = Quaternion.AngleAxis(_target.OmegaDeg, Vector3.up);
@@ -89,7 +97,7 @@ public class GameManager : MonoBehaviour
             float nu = Mathf.Atan2(Mathf.Sqrt(1 - _target.e * _target.e) * sinE, cosE - _target.e);
 
             Vector3 rPQW = new Vector3(r * Mathf.Cos(nu), 0f, r * Mathf.Sin(nu));
-            points[j] = sun != null ? sun.position + Q * rPQW : Q * rPQW;
+            points[j] = _zentralObjekt != null ? _zentralObjekt.position + Q * rPQW : Q * rPQW;
         }
 
         return points;
@@ -101,7 +109,7 @@ public class GameManager : MonoBehaviour
     {
         timer_sekunde += (Time.deltaTime * _multiplikator);
         if (timer_sekunde >= 60)
-        {
+        {   // WIP, Multiplikator mitbedenken
             timer_minute++;
             timer_sekunde -= 60f;
         }

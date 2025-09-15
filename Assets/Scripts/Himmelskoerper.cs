@@ -9,6 +9,7 @@ public class Himmelskoerper : MonoBehaviour
     protected double gewichtskraft;
 
     // Verwaltung
+    GameManager gm = GameManager.Instance;
     public string Name;
 
 
@@ -32,6 +33,10 @@ public class Himmelskoerper : MonoBehaviour
     #endregion
 
     #region MonoBehaviour-Methoden
+    private void Awake()
+    {
+        gm.InitInfosCall += InitInfos;
+    }
     void Start()
     {
         // Euler Integration Start
@@ -42,6 +47,10 @@ public class Himmelskoerper : MonoBehaviour
     {
 
     }
+    private void OnDestroy()
+    {
+        gm.InitInfosCall -= InitInfos;
+    }
     #endregion
 
     #region Physics
@@ -51,6 +60,11 @@ public class Himmelskoerper : MonoBehaviour
     public void UpdatePosition(float deltaTime) => transform.position += bewegungsvektor * deltaTime;
     #endregion
 
-    
+
     #endregion
+
+    private void InitInfos()
+    {
+
+    }
 }
