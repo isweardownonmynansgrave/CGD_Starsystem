@@ -7,12 +7,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     // Timer
-    [HideInInspector]
-    public int timer_stunde;
-    [HideInInspector]
-    public int timer_minute;
-    [HideInInspector]
-    public float timer_sekunde;
+    [HideInInspector] public int    timer_stunde;
+    [HideInInspector] public int    timer_minute;
+    [HideInInspector] public float  timer_sekunde;
+    [HideInInspector] public int    timer_tage;
+    [HideInInspector] public int    timer_jahre;
+    [HideInInspector] public static int timer_bound_minute;
+    [HideInInspector] public static int timer_bound_stunde;
+    [HideInInspector] public static int timer_bound_tag;
+    [HideInInspector] public static int timer_bound_jahr;
 
     // Game-related
     [HideInInspector]
@@ -32,9 +35,16 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        // Timer Vars, bei Savegame den Stand aus Datei laden & setzen
         timer_stunde = 0;
         timer_minute = 0;
         timer_stunde = 0;
+
+        // Erden-Jahr als Zeitachsen-Schwellenwerte
+        timer_bound_minute = 60;
+        timer_bound_stunde = 60;
+        timer_bound_tag = 24;
+        timer_bound_jahr = 365;
 
         // Events
         InitInfosCall?.Invoke();
@@ -48,7 +58,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Init
-    /* Ablauf-Klakulation
+    /* Ablauf-Kalkulation
     1. Nimm dein vorhandenes Kepler-Setup (a, e, i, Ω, ω).
     2. Erzeuge viele Werte der mittleren Anomalie M von 0 … 2π.
     3. Löse für jeden M die Kepler-Gleichung → E.
@@ -60,11 +70,11 @@ public class GameManager : MonoBehaviour
     public static void InitKeplerOrbit(GameObject _obj, GameObject _zentralObj, int _anzahlKoordinaten = 128)
     {
         HKMassereich hk = null;
-        KeplerOrbit orbit = null;
+        KeplerOrbit kepler = null;
         try
         {
             hk = _obj.GetComponent<HKMassereich>();
-            orbit = _obj.GetComponent<KeplerOrbit>();
+            kepler = _obj.GetComponent<KeplerOrbit>();
         }
         catch (Exception e)
         {
@@ -72,51 +82,36 @@ public class GameManager : MonoBehaviour
         }
         
         // Werte der mittleren Anomalie M erzeugt, Gleichung gelöst, Koords-Array zurückgegeben
-        hk.OrbitKoordinaten = GenerateOrbitPoints(orbit, _zentralObj.transform, _anzahlKoordinaten);
+        hk.OrbitKoordinaten = PhysicsManager.GenerateOrbitPoints(kepler, _zentralObj.transform, _anzahlKoordinaten);
 
         hk.InitLineRenderer(_anzahlKoordinaten);
     }
-    private static Vector3[] GenerateOrbitPoints(KeplerOrbit _target, Transform _zentralObjekt, int numPoints) // Access via InitKelperOrbit()
-    {
-        Vector3[] points = new Vector3[numPoints];
-
-        // Rotation vorbereiten
-        Quaternion Rz_Omega = Quaternion.AngleAxis(_target.OmegaDeg, Vector3.up);
-        Quaternion Rx_i     = Quaternion.AngleAxis(_target.iDeg, Vector3.right);
-        Quaternion Rz_omega = Quaternion.AngleAxis(_target.omegaDeg, Vector3.up);
-        Quaternion Q = Rz_Omega * Rx_i * Rz_omega;
-
-        for (int j = 0; j < numPoints; j++)
-        {
-            float Mj = (j / (float)numPoints) * 2f * Mathf.PI;
-            float Ej = KeplerOrbit.SolveEccentricAnomaly(Mj, _target.e);
-
-            float cosE = Mathf.Cos(Ej);
-            float sinE = Mathf.Sin(Ej);
-            float r = _target.a * (1 - _target.e * cosE);
-            float nu = Mathf.Atan2(Mathf.Sqrt(1 - _target.e * _target.e) * sinE, cosE - _target.e);
-
-            Vector3 rPQW = new Vector3(r * Mathf.Cos(nu), 0f, r * Mathf.Sin(nu));
-            points[j] = _zentralObjekt != null ? _zentralObjekt.position + Q * rPQW : Q * rPQW;
-        }
-
-        return points;
-    }
+    
     #endregion
 
     #region Timer
     public void AddIntervall(int _multiplikator = 1) // Möglichkeiten: x1,x100,x1000
     {
         timer_sekunde += (Time.deltaTime * _multiplikator);
-        if (timer_sekunde >= 60)
+        if (timer_sekunde >= timer_bound_minute)
         {   // WIP, Multiplikator mitbedenken
-            timer_minute++;
-            timer_sekunde -= 60f;
+            timer_minute += (int)(timer_sekunde / timer_bound_minute);
+            timer_sekunde = timer_sekunde % timer_bound_minute;
         }
-        if (timer_minute >= 60)
+        if (timer_minute >= timer_bound_stunde)
         {
-            timer_stunde++;
-            timer_minute -= 60;
+            timer_stunde += (int)(timer_minute / timer_bound_stunde);
+            timer_minute = timer_minute % timer_bound_stunde;
+        }
+        if (timer_stunde >= timer_bound_tag)
+        {
+            timer_tage += (int)(timer_stunde / timer_bound_tag);
+            timer_stunde = timer_stunde % timer_bound_tag;
+        }
+        if (timer_tage >= timer_bound_jahr)
+        {
+            timer_jahre += (int)(timer_tage / timer_bound_jahr);
+            timer_tage = timer_tage % timer_bound_jahr;
         }
     }
     #endregion

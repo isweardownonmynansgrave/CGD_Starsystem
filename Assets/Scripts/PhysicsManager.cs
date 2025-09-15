@@ -5,6 +5,8 @@ public class PhysicsManager : MonoBehaviour
 {
     // Unity Skybox-Asset
     // assetstore.unity.com/packages/package/92717
+    // Singleton
+    public static PhysicsManager Instance;
     private static double GRAVITATIONSKONSTANTE;
     // Gravity Well
     private double gravityWell_LOWERBOUND;
@@ -15,6 +17,12 @@ public class PhysicsManager : MonoBehaviour
     #region MonoBehaviour
     void Awake()
     {
+        // Singleton
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+        
         // FIXED DATA INIT
         GRAVITATIONSKONSTANTE = 6.674d * 10e-11d;
         gravityWell_LOWERBOUND = 1 * 10e-6d;
@@ -115,6 +123,33 @@ public class PhysicsManager : MonoBehaviour
     {
         double g = GRAVITATIONSKONSTANTE * (_masseInKg / Math.Pow(_radiusInMeter, 2));
         return g;
+    }
+    // KeplerOrbit
+    public static Vector3[] GenerateOrbitPoints(KeplerOrbit _target, Transform _zentralObjekt, int numPoints) // Access via InitKelperOrbit()
+    {
+        Vector3[] points = new Vector3[numPoints];
+
+        // Rotation vorbereiten
+        Quaternion Rz_Omega = Quaternion.AngleAxis(_target.OmegaDeg, Vector3.up);
+        Quaternion Rx_i = Quaternion.AngleAxis(_target.iDeg, Vector3.right);
+        Quaternion Rz_omega = Quaternion.AngleAxis(_target.omegaDeg, Vector3.up);
+        Quaternion Q = Rz_Omega * Rx_i * Rz_omega;
+
+        for (int j = 0; j < numPoints; j++)
+        {
+            float Mj = (j / (float)numPoints) * 2f * Mathf.PI;
+            float Ej = KeplerOrbit.SolveEccentricAnomaly(Mj, _target.e);
+
+            float cosE = Mathf.Cos(Ej);
+            float sinE = Mathf.Sin(Ej);
+            float r = _target.a * (1 - _target.e * cosE);
+            float nu = Mathf.Atan2(Mathf.Sqrt(1 - _target.e * _target.e) * sinE, cosE - _target.e);
+
+            Vector3 rPQW = new Vector3(r * Mathf.Cos(nu), 0f, r * Mathf.Sin(nu));
+            points[j] = _zentralObjekt != null ? _zentralObjekt.position + Q * rPQW : Q * rPQW;
+        }
+
+        return points;
     }
     #endregion
 }

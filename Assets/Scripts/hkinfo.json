@@ -1,0 +1,18 @@
+{
+  "Erde": {
+    "AtmosphaerischeZusammensetzung": "78% N2, 21% O2, 1% andere",
+    "Masse": 5.972e24,
+    "DurchmesserInKm": "12742",
+    "BahnInfo": "1 AE von der Sonne",
+    "AnzahlMonde": 1,
+    "Monde": ["Luna"]
+  },
+  "Mars": {
+    "AtmosphaerischeZusammensetzung": "95% CO2, 2.7% N2, 1.6% Ar",
+    "Masse": 6.39e23,
+    "DurchmesserInKm": "6779",
+    "BahnInfo": "1.5 AE von der Sonne",
+    "AnzahlMonde": 2,
+    "Monde": ["Phobos", "Deimos"]
+  }
+}

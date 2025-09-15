@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
+//using Newtonsoft.Json;
 
+[Serializable]
 public class HKInfo
 {
     // Infos
@@ -20,23 +21,23 @@ public class HKInfo
     {
         //TBD
     }
-
+    /*
     public static HKInfo LadeInfoAusDatei(string dateiPfad, string name)
     {
         if (!File.Exists(dateiPfad))
             throw new FileNotFoundException("Datei nicht gefunden", dateiPfad);
 
-        // Datei lesen
         string json = File.ReadAllText(dateiPfad);
 
-        // Dictionary, damit wir nach Name zugreifen können
-        var planeten = JsonSerializer.Deserialize<Dictionary<string, HKInfo>>(json);
+        // Dictionary mit Planet-Namen als Keys
+        var planeten = JsonConvert.DeserializeObject<Dictionary<string, Planet>>(json);
 
         if (planeten != null && planeten.ContainsKey(name))
         {
             return planeten[name];
         }
 
-        throw new ArgumentException($"JSON-Datei für '{name}' nicht gefunden.");
+        throw new ArgumentException($"Planet '{name}' nicht in JSON gefunden.");
     }
+    */
 }

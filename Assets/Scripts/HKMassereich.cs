@@ -19,7 +19,14 @@ public class HKMassereich : Himmelskoerper
         HasSOI = _soi;
     }
 
-    
-
-    
+    #region KeplerOrbit-Rendering
+    public void InitLineRenderer(int _arrayLaenge)
+    {
+        //OrbitRenderer.Color
+        OrbitRenderer.positionCount = _arrayLaenge;
+        OrbitRenderer.SetPositions(OrbitKoordinaten);
+        //OrbitRenderer.loop = true; // Erst Orbit visuell anschauen und dann entscheiden
+        OrbitRenderer.useWorldSpace = false; // Nötig, falls der Orbit mit dem Objekt mitwandern soll
+    }
+    #endregion
 }
