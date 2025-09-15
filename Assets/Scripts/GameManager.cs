@@ -25,15 +25,12 @@ public class GameManager : MonoBehaviour
     public GameObject Sun { get; set; }
 
     // Info-System
-    private string info_dateipfad = "hkinfo.txt";
+    public static string info_Dateipfad = "hkinfo.txt";
     public Dictionary<string, HKInfo> Infos { get; private set; }
 
     // SphereScaler-Sync
     [HideInInspector] public static float SphereScaler_UnitScaleKm = 100000f; // 1 Unity Unit = 100.000 km
     [HideInInspector] public static float SphereScaler_RadiusBoost = 50f;
-
-    // Events
-    public Action InitInfosCall { get; set; }
 
     #region Mono
     private void Awake()
@@ -55,14 +52,8 @@ public class GameManager : MonoBehaviour
         timer_bound_sekundenProMinute = 60;
         timer_bound_MinutenProStunde = 60;
         timer_bound_stundenProTag = 24;
-        timer_bound_tageProJahr = 365;
+        timer_bound_tageProJahr = 365;   
 
-        // Info-system Initialisierung
-        Infos = new Dictionary<string, HKInfo>();
-        InfoDictFuellenAusTxt();
-
-        // Aufruf an Planeten, ihre Infos abzurufen
-        InitInfosCall?.Invoke();
     }
 
     void Update()
@@ -104,9 +95,10 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Init-Infos
-    public void InfoDictFuellenAusTxt()
+    public static Dictionary<string, HKInfo> InfoDictFuellenAusTxt(string _pfad)
     {
-        StreamReader sr = new StreamReader(info_dateipfad);
+        Dictionary<string, HKInfo> tempDict = new();
+        StreamReader sr = new StreamReader(_pfad);
         while (!sr.EndOfStream)
         {
             HKInfo temp = new HKInfo();
@@ -143,8 +135,10 @@ public class GameManager : MonoBehaviour
                         break;
                 }
             }
-            Infos.Add(temp.Name.ToLower(), temp);
+            tempDict.Add(temp.Name.ToLower(), temp);
         }
+        sr.Close();
+        return tempDict;
     }
     #endregion
     #endregion

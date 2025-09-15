@@ -12,7 +12,7 @@ public class UI : MonoBehaviour
 
     void Start()
     {
-        
+        Infos = GameManager.InfoDictFuellenAusTxt(GameManager.info_Dateipfad);
     }
 
     void Update()

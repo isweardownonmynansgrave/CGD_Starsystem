@@ -35,7 +35,7 @@ public class Himmelskoerper : MonoBehaviour
     #region MonoBehaviour-Methoden
     private void Awake()
     {
-        gm.InitInfosCall += InitInfos;
+        
     }
     void Start()
     {
@@ -46,10 +46,6 @@ public class Himmelskoerper : MonoBehaviour
     void Update()
     {
 
-    }
-    private void OnDestroy()
-    {
-        gm.InitInfosCall -= InitInfos;
     }
     #endregion
 
