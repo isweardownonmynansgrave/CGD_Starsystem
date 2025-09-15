@@ -4,7 +4,10 @@ public class HKMassereich : Himmelskoerper
 {
     #region Instanzvariablen
     // Physikalische Werte
-    private Vector3[] OrbitKoordinaten;
+
+    // KeplerOrbit
+    public Vector3[] OrbitKoordinaten { get; set; }
+    public LineRenderer OrbitRenderer { get; set; }
 
     // Sphere of Influence
     public bool HasSOI { get; set; }

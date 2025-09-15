@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
         AddIntervall();
     }
     #endregion
-    
+
     #region Init
     /* Ablauf-Klakulation
     1. Nimm dein vorhandenes Kepler-Setup (a, e, i, Ω, ω).
@@ -48,12 +49,23 @@ public class GameManager : MonoBehaviour
     // Initialisieren der Laufbahnen
     public void InitKeplerOrbit(GameObject _obj, int _anzahlKoordinaten = 128)
     {
-        Himmelskoerper hk = _obj.GetComponent<Himmelskoerper>();
-        KeplerOrbit orbit = _obj.GetComponent<KeplerOrbit>();
+        try
+        {
+            HKMassereich hk = _obj.GetComponent<HKMassereich>();
+            KeplerOrbit orbit = _obj.GetComponent<KeplerOrbit>();
+            LineRenderer renderer = _obj.GetComponent<LineRenderer>();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+        
 
-        // Werte der mittleren Anomalie M erzeugen, von 0 … 2π.
-        Vector3[] werteDerMittlerenAnomalie = GenerateOrbitPoints(orbit, _anzahlKoordinaten);
 
+        // Werte der mittleren Anomalie M erzeugt, Gleichung gelöst, Array zurückgegeben
+        hk.OrbitKoordinaten = GenerateOrbitPoints(orbit, _anzahlKoordinaten);
+
+        
     }
     public Vector3[] GenerateOrbitPoints(KeplerOrbit _target, int numPoints)
     {
