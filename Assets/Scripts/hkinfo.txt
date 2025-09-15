@@ -1,0 +1,80 @@
+Name;Sol
+Atmo;Wasserstoff (~74%), Helium (~24%), Spuren schwererer Elemente
+Masse;1988999999999999901909255192576 kg
+Durchm;1,392,700 km
+Bahn;Zentralkörper des Sonnensystems, von allen Planeten und Objekten umkreist
+AnzMo;0
+Monde;
+END
+Name;Merkur
+Atmo;Sehr dünn: Sauerstoff, Natrium, Wasserstoff, Helium, Kalium (Exosphäre)
+Masse;330099999999999977979904 kg
+Durchm;4,879 km
+Bahn;Umlaufbahn um Sol, Periode ~88 Tage
+AnzMo;0
+Monde;
+END
+Name;Venus
+Atmo;96.5% CO2, 3.5% N2, Spuren Schwefeldioxid
+Masse;4867000000000000069206016 kg
+Durchm;12,104 km
+Bahn;Umlaufbahn um Sol, Periode ~225 Tage
+AnzMo;0
+Monde;
+END
+Name;Erde
+Atmo;78% N2, 21% O2, 1% Argon, CO2, Spuren
+Masse;5972000000000000327155712 kg
+Durchm;12,742 km
+Bahn;Umlaufbahn um Sol, Periode ~365 Tage
+AnzMo;1
+Monde;Luna
+END
+Name;Mars
+Atmo;95% CO2, 2.6% N2, 1.9% Ar, Spuren O2
+Masse;641700000000000066060288 kg
+Durchm;6,779 km
+Bahn;Umlaufbahn um Sol, Periode ~687 Tage
+AnzMo;2
+Monde;Phobos,Deimos
+END
+Name;Jupiter
+Atmo;90% H2, 10% He, Spuren Methan, Ammoniak, Wasser
+Masse;1897999999999999949903233024 kg
+Durchm;139,820 km
+Bahn;Umlaufbahn um Sol, Periode ~11.9 Jahre
+AnzMo;95
+Monde;Io,Europa,Ganymed,Kallisto,...
+END
+Name;Saturn
+Atmo;96% H2, 3% He, Spuren Methan, Ammoniak
+Masse;568300000000000008128561152 kg
+Durchm;116,460 km
+Bahn;Umlaufbahn um Sol, Periode ~29.5 Jahre
+AnzMo;146
+Monde;Titan,Enceladus,Rhea,Iapetus,Dione,...
+END
+Name;Uranus
+Atmo;83% H2, 15% He, 2% Methan
+Masse;86810000000000006505365504 kg
+Durchm;50,724 km
+Bahn;Umlaufbahn um Sol, Periode ~84 Jahre
+AnzMo;28
+Monde;Titania,Oberon,Umbriel,Ariel,Miranda,...
+END
+Name;Neptun
+Atmo;80% H2, 19% He, 1.5% Methan
+Masse;102399999999999991410065408 kg
+Durchm;49,244 km
+Bahn;Umlaufbahn um Sol, Periode ~165 Jahre
+AnzMo;16
+Monde;Triton,Nereid,Proteus,Despina,Thalassa,...
+END
+Name;Pluto
+Atmo;Stickstoff, Methan, Kohlenmonoxid
+Masse;13089999999999999475712 kg
+Durchm;2,377 km
+Bahn;Umlaufbahn um Sol, Periode ~248 Jahre
+AnzMo;5
+Monde;Charon,Styx,Nix,Kerberos,Hydra
+END
