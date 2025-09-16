@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7402792738699091096
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: a
+      value: 9.5371
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: e
+      value: 0.0542
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: iDeg
+      value: 2.485
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: OmegaDeg
+      value: 113.665
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: womegaDeg
+      value: 338.393
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: periodSeconds
+      value: 929000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632450246982177370, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: meanAnomalyDegAtEpoch
+      value: 317.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990939292901724469, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_Name
+      value: Saturn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661965778509980940, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: Name
+      value: Saturn
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4521086b7856d554a926567723b6f076, type: 3}

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8431700259300803884
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5903298217610540251, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: Name
+      value: Venus
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: a
+      value: 0.7233
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: e
+      value: 0.0068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: iDeg
+      value: 3.3947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: OmegaDeg
+      value: 76.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: womegaDeg
+      value: 54.884
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: periodSeconds
+      value: 19400000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: meanAnomalyDegAtEpoch
+      value: 50.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862474952308441314, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_Name
+      value: Venus
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
