@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: Name
       value: Venus
       objectReference: {fileID: 0}
+    - target: {fileID: 5989432985640819609, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: realRadiusKm
+      value: 12104
+      objectReference: {fileID: 0}
     - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
       propertyPath: a
       value: 0.7233
@@ -39,6 +43,18 @@ PrefabInstance:
     - target: {fileID: 7490535253746713485, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
       propertyPath: meanAnomalyDegAtEpoch
       value: 50.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12.104
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12.104
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12.104
       objectReference: {fileID: 0}
     - target: {fileID: 8760269021606384736, guid: 879469b4b9a42b4479bd16bafcbb3ae8, type: 3}
       propertyPath: m_LocalPosition.x

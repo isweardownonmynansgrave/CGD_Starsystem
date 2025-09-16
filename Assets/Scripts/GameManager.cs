@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, HKInfo> Infos { get; private set; }
 
     // SphereScaler-Sync
-    [HideInInspector] public static float SphereScaler_UnitScaleKm = 100000f; // 1 Unity Unit = 100.000 km
-    [HideInInspector] public static float SphereScaler_RadiusBoost = 50f;
+    public static float SphereScaler_UnitScaleKm = 100000f; // 1 Unity Unit = 100.000 km
+    public static float SphereScaler_RadiusBoost = 1f;
 
     #region Mono
     private void Awake()

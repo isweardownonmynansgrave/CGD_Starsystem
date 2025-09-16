@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: Name
       value: Jupiter
       objectReference: {fileID: 0}
+    - target: {fileID: 5647639601863837217, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+      propertyPath: realRadiusKm
+      value: 139820
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272316795771423192, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 139.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272316795771423192, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 139.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272316795771423192, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 139.82
+      objectReference: {fileID: 0}
     - target: {fileID: 7272316795771423192, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -77,6 +93,10 @@ PrefabInstance:
       value: 274.3
       objectReference: {fileID: 0}
     - target: {fileID: 8830844165152054837, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+      propertyPath: planetMesh
+      value: 
+      objectReference: {fileID: 3466376839348016341}
+    - target: {fileID: 8830844165152054837, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
       propertyPath: periodSeconds
       value: 375000000
       objectReference: {fileID: 0}
@@ -89,3 +109,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+--- !u!4 &3466376839348016341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 341153220974729402, guid: 0c5718e5f5f150142a56d9f7ea771adc, type: 3}
+  m_PrefabInstance: {fileID: 3794016959131487343}
+  m_PrefabAsset: {fileID: 0}

@@ -37,6 +37,18 @@ PrefabInstance:
       value: 317.02
       objectReference: {fileID: 0}
     - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 116.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 116.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 116.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785854257203185079, guid: 4521086b7856d554a926567723b6f076, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -83,6 +95,10 @@ PrefabInstance:
     - target: {fileID: 8661965778509980940, guid: 4521086b7856d554a926567723b6f076, type: 3}
       propertyPath: Name
       value: Saturn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847176439814081102, guid: 4521086b7856d554a926567723b6f076, type: 3}
+      propertyPath: realRadiusKm
+      value: 116460
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

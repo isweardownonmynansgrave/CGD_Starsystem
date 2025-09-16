@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: Name
       value: Merkur
       objectReference: {fileID: 0}
+    - target: {fileID: 5391940213069582864, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+      propertyPath: realRadiusKm
+      value: 4879
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942301976231009769, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.879
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942301976231009769, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.879
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942301976231009769, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.879
+      objectReference: {fileID: 0}
     - target: {fileID: 6942301976231009769, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -77,6 +93,10 @@ PrefabInstance:
       value: 29.124
       objectReference: {fileID: 0}
     - target: {fileID: 9095303941814864388, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+      propertyPath: planetMesh
+      value: 
+      objectReference: {fileID: 1856269019276428546}
+    - target: {fileID: 9095303941814864388, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
       propertyPath: periodSeconds
       value: 7600000
       objectReference: {fileID: 0}
@@ -89,3 +109,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+--- !u!4 &1856269019276428546 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2377461908114571, guid: 0c378679e194b264fa3074b835a5d822, type: 3}
+  m_PrefabInstance: {fileID: 1858500791179463049}
+  m_PrefabAsset: {fileID: 0}

@@ -10,7 +10,7 @@ public class KeplerOrbit : MonoBehaviour
     public float a = 10f;                 // semi-major axis (units)
     [Range(0f, 0.99f)] public float e;    // eccentricity
     public float iDeg;                    // inclination i
-    public float omegaDeg;                // argument of periapsis ω
+    public float womegaDeg;                // argument of periapsis ω
     public float OmegaDeg;                // longitude of ascending node Ω
     public float periodSeconds = 60f;     // orbital period T
     public float meanAnomalyDegAtEpoch;   // M0 at t=0
@@ -48,7 +48,7 @@ public class KeplerOrbit : MonoBehaviour
         // Rotation to inertial frame: Rz(Ω) * Rx(i) * Rz(ω)
         Quaternion Rz_Omega = Quaternion.AngleAxis(OmegaDeg, Vector3.up);
         Quaternion Rx_i     = Quaternion.AngleAxis(iDeg, Vector3.right);
-        Quaternion Rz_omega = Quaternion.AngleAxis(omegaDeg, Vector3.up);
+        Quaternion Rz_omega = Quaternion.AngleAxis(womegaDeg, Vector3.up);
         Quaternion Q = Rz_Omega * Rx_i * Rz_omega;
 
         Vector3 worldPos = sun.position + Q * rPQW;

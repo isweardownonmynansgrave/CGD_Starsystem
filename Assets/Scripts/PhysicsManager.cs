@@ -132,7 +132,7 @@ public class PhysicsManager : MonoBehaviour
         // Rotation vorbereiten
         Quaternion Rz_Omega = Quaternion.AngleAxis(_target.OmegaDeg, Vector3.up);
         Quaternion Rx_i = Quaternion.AngleAxis(_target.iDeg, Vector3.right);
-        Quaternion Rz_omega = Quaternion.AngleAxis(_target.omegaDeg, Vector3.up);
+        Quaternion Rz_omega = Quaternion.AngleAxis(_target.womegaDeg, Vector3.up);
         Quaternion Q = Rz_Omega * Rx_i * Rz_omega;
 
         for (int j = 0; j < numPoints; j++)
