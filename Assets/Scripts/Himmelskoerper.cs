@@ -9,7 +9,6 @@ public class Himmelskoerper : MonoBehaviour
     protected double gewichtskraft;
 
     // Verwaltung
-    GameManager gm = GameManager.Instance;
     public string Name;
 
 
@@ -56,11 +55,5 @@ public class Himmelskoerper : MonoBehaviour
     public void UpdatePosition(float deltaTime) => transform.position += bewegungsvektor * deltaTime;
     #endregion
 
-
     #endregion
-
-    private void InitInfos()
-    {
-
-    }
 }

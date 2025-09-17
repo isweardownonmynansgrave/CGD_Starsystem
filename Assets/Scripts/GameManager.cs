@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     // Game-related
     [HideInInspector]
     public GameObject Sun { get; set; }
+    public GameObject Root { get; private set; }
+    public HKMassereich[] Planeten { get; private set; }
+    
 
     // Info-System
     public static string info_Dateipfad = "hkinfo.txt";
@@ -32,6 +35,8 @@ public class GameManager : MonoBehaviour
     public static float SphereScaler_UnitScaleKm = 100000f; // 1 Unity Unit = 100.000 km
     public static float SphereScaler_RadiusBoost = 1f;
 
+    public Action InitKeplerEvent;
+
     #region Mono
     private void Awake()
     {
@@ -40,20 +45,21 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-    }
-    void Start()
-    {
+
         // Timer Vars, bei Savegame den Stand aus Datei laden & setzen
         timer_stunde = 0;
         timer_minute = 0;
         timer_stunde = 0;
+        SetZeitachsenSchwellenwert();
+    }
+    void Start()
+    {
+        Root = GameObject.Find("Root_Mittelpunkt");
+        Sun = GameObject.Find("SOL");
+        Planeten = Root.GetComponentsInChildren<HKMassereich>();
 
-        // Erden-Jahr als Zeitachsen-Schwellenwerte
-        timer_bound_sekundenProMinute = 60;
-        timer_bound_MinutenProStunde = 60;
-        timer_bound_stundenProTag = 24;
-        timer_bound_tageProJahr = 365;   
-
+        foreach (HKMassereich planet in Planeten)
+            planet.Init();
     }
 
     void Update()
@@ -141,6 +147,15 @@ public class GameManager : MonoBehaviour
         return tempDict;
     }
     #endregion
+
+    private void SetZeitachsenSchwellenwert()
+    {
+        // Erden-Jahr als Zeitachsen-Schwellenwerte
+        timer_bound_sekundenProMinute = 60;
+        timer_bound_MinutenProStunde = 60;
+        timer_bound_stundenProTag = 24;
+        timer_bound_tageProJahr = 365;
+    }
     #endregion
 
     #region Timer
